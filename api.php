@@ -7,7 +7,11 @@
 //CREATE:
 //vars: Player1,player2,player3,player4
 //
-
+//
+//
+require('DBcreds.php');
+//DBcreds has the info to connect to the remote MySQL server;
+//
 switch ($_POST['type']) {
 	case 'create':
 	//load the players from the POST variable
