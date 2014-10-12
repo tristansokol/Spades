@@ -13,6 +13,9 @@ require('DBcreds.php');
 //DBcreds has the info to connect to the remote MySQL server;
 //
 switch ($_POST['type']) {
+	case 'list':
+
+	break;
 	case 'create':
 	//load the players from the POST variable
 
