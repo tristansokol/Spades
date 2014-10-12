@@ -108,7 +108,7 @@
 
 </head>
 <body>
-  <div class="row">gfgdg
+  <div class="row">
     <div class="small-12 medium-6 columns">
       <input id='p1' class="nametag p1" type="text">    
       <input id='p2' class="nametag p2" type="text">
