@@ -139,15 +139,6 @@
       };
     </script>
     <?php
-  }else{
-    $files1 = scandir('games/',1);
-    array_pop($files1);
-    array_pop($files1);
-
-    foreach ($files1 as  $value) {
-      $value = str_replace('.spades', '', $value);
-      echo '<a href="'.$value.'">'.$value.'</a><br>';
-    }  
   }
   ?>
 
@@ -209,7 +200,7 @@
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
           console.log(xmlhttp.responseText);
           if (type == "create"){
-            window.location.href = '/spades/'+xmlhttp.responseText;
+            window.location.href = './'+xmlhttp.responseText;
           }
           if (type == "load"){
             data = JSON.parse(xmlhttp.responseText);
