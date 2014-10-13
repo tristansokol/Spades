@@ -151,21 +151,37 @@
       var player = element.getAttribute("player");
       var hand = element.getAttribute("hand");
       var type = element.getAttribute("kind");
-      switch(Number(player)) {
-        case 1:
-        document.getElementById("hand"+hand+type+"3").focus()
-        break;
-        case 2:
-        document.getElementById("hand"+hand+type+"4").focus()
-        break;
-        case 3:
-        document.getElementById("hand"+hand+type+"2").focus()
-        break;
-        case 4:
-        document.getElementById("hand"+hand+type+"1").focus()
-        break;
+      if(type == "bid"){
+        switch(Number(player)) {
+          case 1:
+          document.getElementById("hand"+hand+type+"3").focus()
+          break;
+          case 2:
+          document.getElementById("hand"+hand+type+"4").focus()
+          break;
+          case 3:
+          document.getElementById("hand"+hand+type+"2").focus()
+          break;
+          case 4:
+          document.getElementById("hand"+hand+type+"1").focus()
+          break;
+        }
+      }else if (type == "take"){
+        switch(Number(player)) {
+          case 1:
+          document.getElementById("hand"+hand+type+"2").focus()
+          break;
+          case 2:
+          document.getElementById("hand"+hand+type+"3").focus()
+          break;
+          case 3:
+          document.getElementById("hand"+hand+type+"4").focus()
+          break;
+          case 4:
+          document.getElementById("hand"+hand+type+"1").focus()
+          break;
+        }
       }
-
     }
     function LoadGame(id){
       console.log("Loading Game: "+id);
