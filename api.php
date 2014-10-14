@@ -7,13 +7,19 @@
 //CREATE:
 //vars: Player1,player2,player3,player4
 //
-//
+//$con is set with the DBcreds file to add all the mysql info
 //
 require('DBcreds.php');
 //DBcreds has the info to connect to the remote MySQL server;
 //
 switch ($_POST['type']) {
 	case 'list':
+	$result = mysqli_query($con,"SELECT `Player1`,`Player2`,`Player3`,`Player4`,`StartTime` FROM Games LIMIT 0,20");
+
+	while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+		$output[] = $row;
+	}
+	echo json_encode($output);
 
 	break;
 	case 'create':

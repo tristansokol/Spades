@@ -40,6 +40,9 @@
     input[type="text"].nametag:focus{
       box-shadow: none;
     }
+    #games{
+      color: #999;
+    }
     #p1,.p1{
       color: #D7DB56;
       border-color: #D7DB56;
@@ -139,10 +142,19 @@
       };
     </script>
     <?php
+  }else{
+    ?>
+    <div id="games">
+    </div>
+
+    <?php
   }
   ?>
 
   <script type="text/javascript">
+    var listGames = function() {
+      AjaxRequest('list');
+    }
     function createGame() {
       console.log("creating Game");
       AjaxRequest('create');
@@ -251,6 +263,12 @@
           if (type == "update"){
             UpdateScores();
           }
+          if (type == "list"){
+            data = JSON.parse(xmlhttp.responseText);
+            for (var i = data.length - 1; i >= 0; i--) {
+            document.getElementById('games').innerHTML += data[i].Player1 +' & '+ data[i].Player2 +' vs '+data[i].Player3 +' & '+ data[i].Player4 +'<br>';
+            };
+          }
         }
       }
       if (type == 'load'){
@@ -269,6 +287,10 @@
         xmlhttp.open("POST","api.php");
         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xmlhttp.send("type="+type+"&"+data);
+      }else if (type == 'list'){
+        xmlhttp.open("POST","api.php");
+        xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xmlhttp.send("type="+type);
       }
 
     }
@@ -469,7 +491,15 @@
 
   }
 </script>
+<?php if(!isset($_GET['game'])){
+  ?>
 
+  <script type="text/javascript">
+    window.onload = listGames();
+  </script>
+  <?php
+}
+?>
 <script src="js/vendor/jquery.js"></script>
 <script src="js/foundation.min.js"></script>
 <script>
