@@ -156,11 +156,11 @@
           case 1:
           document.getElementById("hand"+hand+type+"3").focus()
           break;
-          case 2:
-          document.getElementById("hand"+hand+type+"4").focus()
-          break;
           case 3:
           document.getElementById("hand"+hand+type+"2").focus()
+          break;
+          case 2:
+          document.getElementById("hand"+hand+type+"4").focus()
           break;
           case 4:
           document.getElementById("hand"+hand+"take"+"1").focus()
@@ -178,7 +178,7 @@
           document.getElementById("hand"+hand+type+"4").focus()
           break;
           case 4:
-          document.getElementById("hand"+hand+"bid"+"1").focus()
+          document.getElementById("hand"+hand+1+"bid"+"1").focus()
           break;
         }
       }
