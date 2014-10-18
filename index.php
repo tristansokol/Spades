@@ -147,7 +147,7 @@
       console.log("creating Game");
       AjaxRequest('create');
     }
-    function autoAdvanace(element){
+    function autoAdvance(element){
       var player = element.getAttribute("player");
       var hand = element.getAttribute("hand");
       var type = element.getAttribute("kind");
@@ -163,7 +163,7 @@
           document.getElementById("hand"+hand+type+"2").focus()
           break;
           case 4:
-          document.getElementById("hand"+hand+type+"1").focus()
+          document.getElementById("hand"+hand+"take"+"1").focus()
           break;
         }
       }else if (type == "take"){
@@ -178,11 +178,10 @@
           document.getElementById("hand"+hand+type+"4").focus()
           break;
           case 4:
-          document.getElementById("hand"+hand+type+"1").focus()
+          document.getElementById("hand"+hand+"bid"+"1").focus()
           break;
         }
       }
-    }
     function LoadGame(id){
       console.log("Loading Game: "+id);
       AjaxRequest('load',id);
@@ -229,16 +228,16 @@
             for (i = 1; i <= data.hands.length; i++) { 
               var addendum = '\
               <div class="small-12 columns">\
-                <input type="text" id="hand'+i+'bid1" onkeypress=autoAdvanace(this); player=1 kind="bid" hand='+i+' placecholder="hand'+i+'bid1" value="'+ ((typeof data.hands[i] === 'undefined') ? '' : data.hands[i].bids[0] )+'" onchange="update(\'hand'+i+'\')" class="bid p1 '+((typeof data.hands[i] === 'undefined') ? 'empty' : '')+'">\
-                <input type="text" id="hand'+i+'take1" onkeypress=autoAdvanace(this); player=1 kind="take" hand='+i+' placecholder="hand'+i+'take1" value="'+ ((typeof data.hands[i] === 'undefined') ? '' : data.hands[i].takes[0] )+'" onchange="update(\'hand'+i+'\')" class="take p1 '+((typeof data.hands[i] === 'undefined') ? 'empty' : '')+'">\
-                <input type="text" id="hand'+i+'bid2"  onkeypress=autoAdvanace(this); player=2 kind="bid" hand='+i+' placecholder="hand'+i+'bid2" value="'+ ((typeof data.hands[i] === 'undefined') ? '' : data.hands[i].bids[1] )+'" onchange="update(\'hand'+i+'\')" class="bid p2 '+((typeof data.hands[i] === 'undefined') ? 'empty' : '')+'">\
-                <input type="text" id="hand'+i+'take2"  onkeypress=autoAdvanace(this); player=2 kind="take" hand='+i+' placecholder="hand'+i+'take2" value="'+ ((typeof data.hands[i] === 'undefined') ? '' : data.hands[i].takes[1] )+'" onchange="update(\'hand'+i+'\')" class="take p2 '+((typeof data.hands[i] === 'undefined') ? 'empty' : '')+'">\
+                <input type="text" id="hand'+i+'bid1" onkeypress=autoAdvance(this); player=1 kind="bid" hand='+i+' placecholder="hand'+i+'bid1" value="'+ ((typeof data.hands[i] === 'undefined') ? '' : data.hands[i].bids[0] )+'" onchange="update(\'hand'+i+'\')" class="bid p1 '+((typeof data.hands[i] === 'undefined') ? 'empty' : '')+'">\
+                <input type="text" id="hand'+i+'take1" onkeypress=autoAdvance(this); player=1 kind="take" hand='+i+' placecholder="hand'+i+'take1" value="'+ ((typeof data.hands[i] === 'undefined') ? '' : data.hands[i].takes[0] )+'" onchange="update(\'hand'+i+'\')" class="take p1 '+((typeof data.hands[i] === 'undefined') ? 'empty' : '')+'">\
+                <input type="text" id="hand'+i+'bid2"  onkeypress=autoAdvance(this); player=2 kind="bid" hand='+i+' placecholder="hand'+i+'bid2" value="'+ ((typeof data.hands[i] === 'undefined') ? '' : data.hands[i].bids[1] )+'" onchange="update(\'hand'+i+'\')" class="bid p2 '+((typeof data.hands[i] === 'undefined') ? 'empty' : '')+'">\
+                <input type="text" id="hand'+i+'take2"  onkeypress=autoAdvance(this); player=2 kind="take" hand='+i+' placecholder="hand'+i+'take2" value="'+ ((typeof data.hands[i] === 'undefined') ? '' : data.hands[i].takes[1] )+'" onchange="update(\'hand'+i+'\')" class="take p2 '+((typeof data.hands[i] === 'undefined') ? 'empty' : '')+'">\
                 <input type="text" id="hand'+i+'scores1" class="scores" >\
                 <input type="text" id="hand'+i+'totalscores1" class="totalscores" >\
-                <input type="text" id="hand'+i+'bid3" onkeypress=autoAdvanace(this); player=3 kind="bid" hand='+i+' placecholder="hand'+i+'bid3" value="'+ ((typeof data.hands[i] === 'undefined') ? '' : data.hands[i].bids[2] )+'" onchange="update(\'hand'+i+'\')" class="bid p3 '+((typeof data.hands[i] === 'undefined') ? 'empty' : '')+'">\
-                <input type="text" id="hand'+i+'take3" onkeypress=autoAdvanace(this); player=3 kind="take" hand='+i+' placecholder="hand'+i+'take3" value="'+ ((typeof data.hands[i] === 'undefined') ? '' : data.hands[i].takes[2] )+'" onchange="update(\'hand'+i+'\')" class="take p3 '+((typeof data.hands[i] === 'undefined') ? 'empty' : '')+'">\
-                <input type="text" id="hand'+i+'bid4" onkeypress=autoAdvanace(this); player=4 kind="bid" hand='+i+' placecholder="hand'+i+'bid4" value="'+ ((typeof data.hands[i] === 'undefined') ? '' : data.hands[i].bids[3] )+'" onchange="update(\'hand'+i+'\')" class="bid p4 '+((typeof data.hands[i] === 'undefined') ? 'empty' : '')+'">\
-                <input type="text" id="hand'+i+'take4" onkeypress=autoAdvanace(this); player=4 kind="take" hand='+i+' placecholder="hand'+i+'take4" value="'+ ((typeof data.hands[i] === 'undefined') ? '' : data.hands[i].takes[3] )+'" onchange="update(\'hand'+i+'\')" class="take p4 '+((typeof data.hands[i] === 'undefined') ? 'empty' : '')+'">\
+                <input type="text" id="hand'+i+'bid3" onkeypress=autoAdvance(this); player=3 kind="bid" hand='+i+' placecholder="hand'+i+'bid3" value="'+ ((typeof data.hands[i] === 'undefined') ? '' : data.hands[i].bids[2] )+'" onchange="update(\'hand'+i+'\')" class="bid p3 '+((typeof data.hands[i] === 'undefined') ? 'empty' : '')+'">\
+                <input type="text" id="hand'+i+'take3" onkeypress=autoAdvance(this); player=3 kind="take" hand='+i+' placecholder="hand'+i+'take3" value="'+ ((typeof data.hands[i] === 'undefined') ? '' : data.hands[i].takes[2] )+'" onchange="update(\'hand'+i+'\')" class="take p3 '+((typeof data.hands[i] === 'undefined') ? 'empty' : '')+'">\
+                <input type="text" id="hand'+i+'bid4" onkeypress=autoAdvance(this); player=4 kind="bid" hand='+i+' placecholder="hand'+i+'bid4" value="'+ ((typeof data.hands[i] === 'undefined') ? '' : data.hands[i].bids[3] )+'" onchange="update(\'hand'+i+'\')" class="bid p4 '+((typeof data.hands[i] === 'undefined') ? 'empty' : '')+'">\
+                <input type="text" id="hand'+i+'take4" onkeypress=autoAdvance(this); player=4 kind="take" hand='+i+' placecholder="hand'+i+'take4" value="'+ ((typeof data.hands[i] === 'undefined') ? '' : data.hands[i].takes[3] )+'" onchange="update(\'hand'+i+'\')" class="take p4 '+((typeof data.hands[i] === 'undefined') ? 'empty' : '')+'">\
                 <input type="text" id="hand'+i+'scores2" class="scores">\
                 <input type="text" id="hand'+i+'totalscores2" class="totalscores" >\
               </div>\
