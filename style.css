@@ -1,0 +1,99 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+body{
+      padding: 1em 0em 1em 0em;
+      background-color: rgb(50,50,50);
+      font-size: 1.5em;
+      font-family: 'Open Sans', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      width:100%;
+    }
+    input[type="text"]{
+      font-family: 'Open Sans', sans-serif;
+      text-align: center;
+    }
+    input[type="text"]:focus{
+      outline: none;
+    }
+    input[type="text"].nametag{
+      display: inline-block;
+      background-color: rgba(50,50,50,0);
+      border: none;
+      border-bottom: thin solid;
+      font-size: .5em;
+      width: 12%
+    }
+    input[type="text"].empty{
+      background-color: rgba(30,30,30,1);
+    }
+    input[type="text"].nametag:focus{
+      box-shadow: none;
+    }
+    #p1,.p1{
+      color: #D7DB56;
+      border-color: #D7DB56;
+    }
+    #p2,.p2{
+      color: #56DB8F;
+    }
+    #p3,.p3{
+      color: #DB5682;
+    }
+    #p4,.p4{
+      color: #56ACDB
+    }
+    .bid,.take,input[type="text"].scores,input[type="text"].totalscores{
+      display: inline-block;
+      background-color: rgba(50,50,50,0);
+      border: none;
+      box-shadow: none;
+      width: 5%;
+      font-size: .75em;
+    }
+    input[type="text"].take{
+      font-weight: 700;
+    }
+    .bid{
+      font-weight: 200;
+    }
+    input[type="text"].take,input[type="text"].bid{
+      border-bottom:thin solid ;
+    }
+    input[type="text"].scores,input[type="text"].totalscores{
+      padding: 0px;
+      width: 9%
+    }
+    .vs, input[type="text"].scores,input[type="text"].totalscores{
+      text-align: center;
+      font-size: 1em;
+      color: rgb(200,200,200);
+    }
+    .vs{
+      width: 18%;
+      display: inline-block;
+    }
+    @media only screen { } /* Define mobile styles */
+
+    @media only screen and (max-width: 40em) { } /* max-width 640px, mobile-only styles, use when QAing mobile issues */
+
+    @media only screen and (min-width: 40.063em) { } /* min-width 641px, medium screens */
+
+    @media only screen and (min-width: 40.063em) and (max-width: 64em) { } /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
+
+    @media only screen and (min-width: 64.063em) { } /* min-width 1025px, large screens */
+
+    @media only screen and (min-width: 64.063em) and (max-width: 90em) { } /* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
+
+    @media only screen and (min-width: 90.063em) { } /* min-width 1441px, xlarge screens */
+
+    @media only screen and (min-width: 90.063em) and (max-width: 120em) { } /* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
+
+    @media only screen and (min-width: 120.063em) { } /* min-width 1921px, xxlarge screens */
+
+    #bestGraph{
+      width: 100%;
+      height:400px;
+    }

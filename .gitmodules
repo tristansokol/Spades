@@ -1,0 +1,3 @@
+[submodule "google-charts-angular"]
+	path = google-charts-angular
+	url = https://github.com/tristansokol/google-charts-angular.git

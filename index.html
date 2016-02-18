@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Spades Scorekeeper!</title>
+    <link href="style.css" rel="stylesheet">
+    <meta name="description" content="A clean and modern responsive spades scorekeeper">
+    <meta name="keywords" content="Spades">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+</head>
+
+<body ng-app="Spades" ng-controller="spadesCtrl">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>
+			<span>Spades Scorekeeper</span>
+		</h2>
+            <span flex></span>
+            <md-button class="md-raised" aria-label="New Game" ng-click="newGame()">
+                New Game
+            </md-button>
+        </div>
+    </md-toolbar>
+    <h1 ng-show="unsupported" ng-cloak>WARNING, your browser is old, and this probably won't work well</h1>
+    <div layout="column" ng-cloak class="md-inline-form">
+        <md-content layout-gt-sm="row" layout-padding layout-nowrap ng-show="currentGame">
+            <div>
+                Current Game
+            </div>
+            <div layout="row">
+                <div flex="25">
+                    <md-input-container>
+                        <label>Player 1</label>
+                        <input ng-model="currentGame.player1" ng-change="currentGame.save()">
+                    </md-input-container>
+                </div>
+                <div flex="25">
+                    <md-input-container>
+                        <label>Player 3</label>
+                        <input ng-model="currentGame.player3" ng-change="currentGame.save()">
+                    </md-input-container>
+                </div>
+                VS
+                <div flex="25">
+                    <md-input-container>
+                        <label>Player 2</label>
+                        <input ng-model="currentGame.player2" ng-change="currentGame.save()">
+                    </md-input-container>
+                </div>
+                <div flex="25">
+                    <md-input-container>
+                        <label>Player 4</label>
+                        <input ng-model="currentGame.player4" ng-change="currentGame.save()">
+                    </md-input-container>
+                </div>
+            </div>
+            <div layout="row">
+                <md-input-container flex="10">
+                    <label>Hand #</label>
+                    <input disabled>
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>P1 Bids</label>
+                    <input disabled>
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>P1 Takes</label>
+                    <input disabled>
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>P3 Bids</label>
+                    <input disabled>
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>P3 Takes</label>
+                    <input disabled>
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>Score</label>
+                    <input disabled>
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>P2 Bids</label>
+                    <input disabled>
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>P2 Takes</label>
+                    <input disabled>
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>P4 Bids</label>
+                    <input disabled>
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>P4 Takes</label>
+                    <input disabled>
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>Score</label>
+                    <input disabled>
+                </md-input-container>
+            </div>
+            <div layout="row" ng-repeat="bid in currentGame.bids.player1 track by $index">
+                <div style="white-space: nowrap;" flex flex="10">
+                    - {{$index}} -
+                </div>
+                <md-input-container flex="10">
+                    <label>P1B{{$index}}</label>
+                    <input ng-model="currentGame.bids.player1[$index]" ng-change="currentGame.update()" required type="number" min="-1" max="13">
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>P1T{{$index}}</label>
+                    <input ng-model="currentGame.takes.player1[$index]" ng-change="currentGame.update()" required type="number" min="-1" max="13">
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>P3B{{$index}}</label>
+                    <input ng-model="currentGame.bids.player3[$index]" ng-change="currentGame.update()" required type="number" min="-1" max="13">
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>P3T{{$index}}</label>
+                    <input ng-model="currentGame.takes.player3[$index]" ng-change="currentGame.update()" required type="number" min="-1" max="13">
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>Score</label>
+                    <input ng-model="currentGame.score.player13[$index]" disabled>
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>P2B{{$index}}</label>
+                    <input ng-model="currentGame.bids.player2[$index]" ng-change="currentGame.update()" required type="number" min="-1" max="13">
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>P2T{{$index}}</label>
+                    <input ng-model="currentGame.takes.player2[$index]" ng-change="currentGame.update()" required type="number" min="-1" max="13">
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>P4B{{$index}}</label>
+                    <input ng-model="currentGame.bids.player4[$index]" ng-change="currentGame.update()" required type="number" min="-1" max="13">
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>P4T{{$index}}</label>
+                    <input ng-model="currentGame.takes.player4[$index]" ng-change="currentGame.update()" required type="number" min="-1" max="13">
+                </md-input-container>
+                <md-input-container flex="10">
+                    <label>Score</label>
+                    <input ng-model="currentGame.score.player24[$index]" disabled>
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <md-input-container flex="50">
+                    <label>Score</label>
+                    <input ng-model="currentGame.totalScore.player13" disabled>
+                </md-input-container>
+                <md-input-container flex="50">
+                    <label>Score</label>
+                    <input ng-model="currentGame.totalScore.player24" disabled>
+                </md-input-container>
+            </div>
+            <div google-chart="LineChart" id="bestGraph" ng-model="graphModel"></div>
+        </md-content>
+    </div>
+    </div>
+    <md-content>
+        <md-list>
+            Past Games
+            <md-divider></md-divider>
+            <md-list-item class="md-2-line" ng-repeat="game in games track by game.id">
+                <div class="md-list-item-text">
+                    <h3 ng-click="setGame(game.id)">{{game.player1}} & {{game.player3}}<span class="md-caption">vs</span> {{game.player2}} & {{game.player4}}</h3>
+                    <p>{{game.date | date:"LLLL d yyyy"}}</p>
+                    <md-button class="md-raised md-warn" ng-click="confirmDelete(game.id)">Delete</md-button>
+                </div>
+                <md-divider></md-divider>
+            </md-list-item>
+        </md-list>
+    </md-content>
+    {{a}}
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-messages.min.js"></script>
+    <script src="node_modules/angular-local-storage/src/angular-local-storage.js"></script>
+    <script src="google-charts-angular/google-charts-angular.js"></script>
+    <!-- Angular Material Library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.js"></script>
+    <script src="main.js"></script>
+    <md-toolbar>
+        <div class="md-toolbar-tools" layout="row" >
+            <span class="md-caption" flex="50" layout-align="center center">    
+                Built by <a href="tristansokol.com">Tristan</a> with <a href="https://github.com/grevory/angular-local-storage">Angular-local-storage</a> and <a href="https://github.com/tristansokol/google-charts-angular">google charts angular</a>
+			</span>
+        </div>
+    </md-toolbar>
+    <footer>
+    </footer>
+</body>
+
+</html>
