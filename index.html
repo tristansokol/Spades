@@ -23,7 +23,7 @@
     </md-toolbar>
     <h1 ng-show="unsupported" ng-cloak>WARNING, your browser is old, and this probably won't work well</h1>
     <div layout="column" ng-cloak class="md-inline-form">
-        <md-content layout-gt-sm="row" layout-padding layout-nowrap ng-show="currentGame">
+        <md-content layout="column" layout-padding layout-nowrap ng-show="currentGame">
             <div>
                 Current Game
             </div>
@@ -158,7 +158,6 @@
             <div google-chart="LineChart" id="bestGraph" ng-model="graphModel"></div>
         </md-content>
     </div>
-    </div>
     <md-content>
         <md-list>
             Past Games
@@ -185,7 +184,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.js"></script>
     <script src="main.js"></script>
     <md-toolbar>
-        <div class="md-toolbar-tools" layout="row" >
+        <div class="md-toolbar-tools" layout="row">
             <span class="md-caption" flex="50" layout-align="center center">    
                 Built by <a href="tristansokol.com">Tristan</a> with <a href="https://github.com/grevory/angular-local-storage">Angular-local-storage</a> and <a href="https://github.com/tristansokol/google-charts-angular">google charts angular</a>
 			</span>
