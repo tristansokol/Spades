@@ -73,7 +73,7 @@ angular.module('Spades', ['LocalStorageModule', 'ngMaterial', 'google-chart']).c
                 this.bags.player13 = 0;
                 this.bags.player24 = 0;
                 for (var i = 0; i < this.takes.player1.length; i++) {
-                    if (!this.takes.player1[i] || !this.takes.player4[i] || !this.takes.player3[i] || !this.takes.player2[i]) {
+                    if (this.takes.player1[i] >-1 || this.takes.player4[i]>-1 || this.takes.player3[i] >-1|| this.takes.player2[i]>-1) {
                         break;
                     } else if (!this.bids.player1[i + 1] && !this.bids.player4[i + 1] && !this.bids.player3[i + 1] && !this.bids.player2[i + 1]) {
                         this.bids.player1[i + 1] = 0;
